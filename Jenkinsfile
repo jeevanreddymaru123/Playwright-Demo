@@ -5,11 +5,9 @@ pipeline {
             steps {
                 // Clone source code from your repository
                 checkout scm
-                https://github.com/jeevanreddymaru123/Playwright-Demo.git
-                
+               // https://github.com/jeevanreddymaru123/Playwright-Demo.git                
             }
         }
-
         stage('Install Dependencies') {
             steps {
                 // Ensure npm, Playwright, and TypeScript are installed
@@ -18,7 +16,6 @@ pipeline {
                 sh 'npx playwright install'
             }
         }
-
         stage('Run Playwright Tests') {
             steps {
                 // Execute Playwright tests (default Playwright config and test files)
