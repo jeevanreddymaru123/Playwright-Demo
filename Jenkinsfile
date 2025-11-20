@@ -25,7 +25,7 @@ pipeline {
     }
     
     environment {
-        NODE_VERSION = '18'
+        NODE_VERSION = '22'
         PLAYWRIGHT_BROWSERS_PATH = './playwright-browsers'
         CI = 'true'
     }
@@ -41,7 +41,7 @@ pipeline {
         stage('Setup Node.js') {
             steps {
                 script {
-                    def nodeHome = tool name: 'NodeJS-18', type: 'jenkins.plugins.nodejs.tools.NodeJSInstallation'
+                    def nodeHome = tool name: 'NodeJS-22', type: 'jenkins.plugins.nodejs.tools.NodeJSInstallation'
                     env.PATH = "${nodeHome}/bin:${env.PATH}"
                 }
                 sh 'node --version'
