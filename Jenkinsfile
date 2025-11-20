@@ -11,6 +11,17 @@ pipeline {
             steps {
                 // Clone source code from your repository
                 checkout scm
+                 echo "Checked out code for ${env.BRANCH_NAME}"
+            }
+        }
+        stage('Setup Node.js') {
+            steps {
+                script {
+                    def nodeHome = tool name: 'NodeJS-18', type: 'jenkins.plugins.nodejs.tools.NodeJSInstallation'
+                    env.PATH = "${nodeHome}/bin:${env.PATH}"
+                }
+                sh 'node --version'
+                sh 'npm --version'
             }
         }
 
