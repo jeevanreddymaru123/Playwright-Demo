@@ -27,9 +27,9 @@ jobs:
       - name: Run all playwright tests
         run: npx playwright test
 
-      - name: Upload HTML report
+      - name: Upload test results
         if: always()
         uses: actions/upload-artifact@v4
         with:
           name: Playwright-report
-          path: reports/Playwright-report.html
+          path: Playwright-report
