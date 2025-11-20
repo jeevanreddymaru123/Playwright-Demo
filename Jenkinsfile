@@ -1,16 +1,12 @@
 pipeline {
-    agent any
-
-    environment {
-        // You can set Node.js version with Jenkins NodeJS plugin if desired
-        // PATH = "/opt/nodejs/bin:${env.PATH}"
-    }
-
+    agent any   
     stages {
         stage('Checkout') {
             steps {
                 // Clone source code from your repository
                 checkout scm
+                https://github.com/jeevanreddymaru123/Playwright-Demo.git
+                
             }
         }
 
