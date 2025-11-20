@@ -12,5 +12,13 @@ pipeline {
                 bat 'npx playwright test'
             }
         }
+         stage('Publish Allure Report') {
+            steps {
+                allure([
+                    results: [[path: 'allure-results']], 
+                    reportBuildPolicy: 'ALWAYS'
+                ])
+            }
+        }
     }
 }
