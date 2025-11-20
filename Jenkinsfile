@@ -1,9 +1,33 @@
 pipeline {
     agent any
 
+    parameters {
+        choice(
+            name: 'ENVIRONMENT',
+            choices: ['dev', 'qa', 'staging', 'prod'],
+            description: 'Environment to run tests against'
+        )
+        choice(
+            name: 'BROWSER',
+            choices: ['chromium', 'firefox', 'webkit', 'all'],
+            description: 'Browser to run tests on'
+        )
+        choice(
+            name: 'TEST_SUITE',
+            choices: ['all', 'smoke', 'regression', 'e2e', 'api', 'mobile'],
+            description: 'Test suite to execute'
+        )
+        booleanParam(
+            name: 'HEADLESS',
+            defaultValue: true,
+            description: 'Run tests in headless mode'
+        )
+    }
+    
     environment {
-        // You can set Node.js version with Jenkins NodeJS plugin if desired
-        // PATH = "/opt/nodejs/bin:${env.PATH}"
+        NODE_VERSION = '18'
+        PLAYWRIGHT_BROWSERS_PATH = './playwright-browsers'
+        CI = 'true'
     }
 
     stages {
